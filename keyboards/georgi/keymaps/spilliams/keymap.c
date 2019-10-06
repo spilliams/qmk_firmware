@@ -41,7 +41,7 @@
 // http://docs.gboards.ca
 uint32_t processQwerty(bool lookup) {
     // Specials
-    P( RT  | RS  | RD  | RZ | LNO,        SEND_STRING("v1.0: spilliams "); SEND_STRING(__DATE__));
+    P( RT  | RS  | RD  | RZ | LNO,        SEND_STRING("v2.0: spilliams "); SEND_STRING(__DATE__));
     P( LNO | RNO | LA  | LO | RE | RU,    SEND(KC_MEDIA_PLAY_PAUSE));
     P( LFT | LK  | LP  | LW,              REPEAT());
     P( ST1 | ST2 | LW  | ST4,             SEND(KC_BSPC));
@@ -59,7 +59,7 @@ uint32_t processQwerty(bool lookup) {
     P( RS | RZ,                SEND(KC_LALT));
     P( LA | LNO,               SEND(KC_LCTL));
     P( LA | LO,                SEND(KC_LALT));
-    P( LO,                     SEND(KC_LSFT));
+    // P( LO,                     SEND(KC_LSFT));
 
     // Function Layer
     P( FUNCT | RF | RR,    SEND(KC_F5));
@@ -121,13 +121,13 @@ uint32_t processQwerty(bool lookup) {
     P( RU | RNO,    SEND(KC_TAB));
     P( RE | RU,     SEND(KC_BSPC));
     P( RD | RZ,     SEND(KC_ENT));
-    P( RE,          SEND(KC_ENT));
-    P( RD,          SEND(KC_BSPC));
+    // P( RE,          SEND(KC_ENT));
+    // P( RD,          SEND(KC_BSPC));
     P( LNO,         SEND(KC_BSPC));
     P( RNO,         SEND(KC_BSPC));
-    P( LA,          SEND(KC_SPC));
-    P( RU,          SEND(KC_SPC));
-    P( RZ,          SEND(KC_ESC));
+    // P( LA,          SEND(KC_SPC));
+    // P( RU,          SEND(KC_SPC));
+    // P( RZ,          SEND(KC_ESC));
 
     // Symbols and Numbers
     P( PWR | RE | RU,      SEND(KC_ENT));
@@ -166,39 +166,38 @@ uint32_t processQwerty(bool lookup) {
     P( PWR | LNO,          SEND(KC_BSLS));
 
     // Letters
-    P( LSU | LSD,    SEND(KC_A));
-    P( LFT | LK,     SEND(KC_S));
-    P( LP  | LW,     SEND(KC_D));
-    P( LH  | LR,     SEND(KC_F));
-    P( ST1 | ST2,    SEND(KC_G));
-    P( ST3 | ST4,    SEND(KC_H));
-    P( RF  | RR,     SEND(KC_J));
-    P( RT  | RS,     SEND(KC_SCLN));
-    P( RG  | RL,     SEND(KC_L));
-    P( RP  | RB,     SEND(KC_K));
+    //  Q   W   E   R   T     Y   U   I   O   P   [
+    //  A   S   D   F   G     H   J   K   L   ;   '
+    //          _   C   V     N   M   _
     P( LSU,          SEND(KC_Q));
-    P( LSD,          SEND(KC_Z));
     P( LFT,          SEND(KC_W));
-    P( LK,           SEND(KC_X));
     P( LP,           SEND(KC_E));
-    P( LW,           SEND(KC_C));
     P( LH,           SEND(KC_R));
-    P( LR,           SEND(KC_V));
     P( ST1,          SEND(KC_T));
-    P( ST2,          SEND(KC_B));
     P( ST3,          SEND(KC_Y));
-    P( ST4,          SEND(KC_N));
     P( RF,           SEND(KC_U));
-    P( RR,           SEND(KC_M));
     P( RP,           SEND(KC_I));
-    P( RB,           SEND(KC_COMM));
     P( RL,           SEND(KC_O));
-    P( RG,           SEND(KC_DOT));
     P( RT,           SEND(KC_P));
-    P( RS,           SEND(KC_SLSH));
-    P( RNO,          SEND(KC_BSPC));
-    P( LNO,          SEND(KC_BSPC));
+    P( RD,           SEND(KC_LBRC));
 
+    P( LSD,          SEND(KC_A));
+    P( LK,           SEND(KC_S));
+    P( LW,           SEND(KC_D));
+    P( LR,           SEND(KC_F));
+    P( ST2,          SEND(KC_G));
+    P( ST4,          SEND(KC_H));
+    P( RR,           SEND(KC_J));
+    P( RB,           SEND(KC_K));
+    P( RG,           SEND(KC_L));
+    P( RS,           SEND(KC_SCLN));
+    P( RZ,           SEND(KC_QUOTE));
+    
+    P( LA,           SEND(KC_C));
+    P( LO,           SEND(KC_V));
+    P( RE,           SEND(KC_N));
+    P( RU,           SEND(KC_M));
+    
     return 0;
 }
 
