@@ -7,3 +7,5 @@ mac, so here we are.
 This iteration of my keymap changes how the qwerty layer is processed, so that
 it represents all the keys that Plover uses to turn a keyboard into a steno
 machine.
+
+In steno mode, the keymap emulates a TX Bolt machine.
