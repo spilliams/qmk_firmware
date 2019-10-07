@@ -22,7 +22,6 @@
 
 // QMK Layers
 #define STENO_LAYER   0
-#define SPILLIAMS     1
 
 /* Keyboard Layout
  * ,---------------------------------.    ,------------------------------.
@@ -41,7 +40,7 @@
 // http://docs.gboards.ca
 uint32_t processQwerty(bool lookup) {
     // Specials
-    P( RT  | RS  | RD  | RZ | LNO,        SEND_STRING("v2.1: spilliams "); SEND_STRING(__DATE__));
+    P( RT  | RS  | RD  | RZ | LNO,        SEND_STRING("v3.0 spilliams "); SEND_STRING(__DATE__));
     P( LNO | RNO | LA  | LO | RE | RU,    SEND(KC_MEDIA_PLAY_PAUSE));
     P( LFT | LK  | LP  | LW,              REPEAT());
     P( ST1 | ST2 | LW  | ST4,             SEND(KC_BSPC));
@@ -59,7 +58,7 @@ uint32_t processQwerty(bool lookup) {
     P( RS | RZ,                SEND(KC_LALT));
     P( LA | LNO,               SEND(KC_LCTL));
     P( LA | LO,                SEND(KC_LALT));
-    // P( LO,                     SEND(KC_LSFT));
+    P( LO,                     SEND(KC_LSFT));
 
     // Function Layer
     P( FUNCT | RF | RR,    SEND(KC_F5));
@@ -121,13 +120,13 @@ uint32_t processQwerty(bool lookup) {
     P( RU | RNO,    SEND(KC_TAB));
     P( RE | RU,     SEND(KC_BSPC));
     P( RD | RZ,     SEND(KC_ENT));
-    // P( RE,          SEND(KC_ENT));
-    // P( RD,          SEND(KC_BSPC));
+    P( RE,          SEND(KC_ENT));
+    P( RD,          SEND(KC_BSPC));
     P( LNO,         SEND(KC_BSPC));
     P( RNO,         SEND(KC_BSPC));
-    // P( LA,          SEND(KC_SPC));
-    // P( RU,          SEND(KC_SPC));
-    // P( RZ,          SEND(KC_ESC));
+    P( LA,          SEND(KC_SPC));
+    P( RU,          SEND(KC_SPC));
+    P( RZ,          SEND(KC_ESC));
 
     // Symbols and Numbers
     P( PWR | RE | RU,      SEND(KC_ENT));
@@ -166,38 +165,39 @@ uint32_t processQwerty(bool lookup) {
     P( PWR | LNO,          SEND(KC_BSLS));
 
     // Letters
-    //  Q   W   E   R   T     Y   U   I   O   P   [
-    //  A   S   D   F   G     H   J   K   L   ;   '
-    //          _   C   V     N   M   _
+    P( LSU | LSD,    SEND(KC_A));
+    P( LFT | LK,     SEND(KC_S));
+    P( LP  | LW,     SEND(KC_D));
+    P( LH  | LR,     SEND(KC_F));
+    P( ST1 | ST2,    SEND(KC_G));
+    P( ST3 | ST4,    SEND(KC_H));
+    P( RF  | RR,     SEND(KC_J));
+    P( RT  | RS,     SEND(KC_SCLN));
+    P( RG  | RL,     SEND(KC_L));
+    P( RP  | RB,     SEND(KC_K));
     P( LSU,          SEND(KC_Q));
+    P( LSD,          SEND(KC_Z));
     P( LFT,          SEND(KC_W));
+    P( LK,           SEND(KC_X));
     P( LP,           SEND(KC_E));
+    P( LW,           SEND(KC_C));
     P( LH,           SEND(KC_R));
+    P( LR,           SEND(KC_V));
     P( ST1,          SEND(KC_T));
+    P( ST2,          SEND(KC_B));
     P( ST3,          SEND(KC_Y));
+    P( ST4,          SEND(KC_N));
     P( RF,           SEND(KC_U));
+    P( RR,           SEND(KC_M));
     P( RP,           SEND(KC_I));
+    P( RB,           SEND(KC_COMM));
     P( RL,           SEND(KC_O));
+    P( RG,           SEND(KC_DOT));
     P( RT,           SEND(KC_P));
-    P( RD,           SEND(KC_LBRC));
+    P( RS,           SEND(KC_SLSH));
+    P( RNO,          SEND(KC_BSPC));
+    P( LNO,          SEND(KC_BSPC));
 
-    P( LSD,          SEND(KC_A));
-    P( LK,           SEND(KC_S));
-    P( LW,           SEND(KC_D));
-    P( LR,           SEND(KC_F));
-    P( ST2,          SEND(KC_G));
-    P( ST4,          SEND(KC_H));
-    P( RR,           SEND(KC_J));
-    P( RB,           SEND(KC_K));
-    P( RG,           SEND(KC_L));
-    P( RS,           SEND(KC_SCLN));
-    P( RZ,           SEND(KC_QUOTE));
-    
-    P( LA,           SEND(KC_C));
-    P( LO,           SEND(KC_V));
-    P( RE,           SEND(KC_N));
-    P( RU,           SEND(KC_M));
-    
     return 0;
 }
 
@@ -210,14 +210,9 @@ uint32_t processQwerty(bool lookup) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // Main layer, everything goes through here
     [STENO_LAYER] = LAYOUT_georgi(
-    STN_FN,  STN_S1,  STN_TL,  STN_PL,  STN_HL,  STN_ST1,       STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
-    STN_PWR, STN_S2,  STN_KL,  STN_WL,  STN_RL,  STN_ST2,       STN_ST4, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,
-                               STN_N1,  STN_A,   STN_O,         STN_E,   STN_U,  STN_N7
-    ),
-    [SPILLIAMS] = LAYOUT_georgi(
-        KC_LSFT, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC,
-        KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,      KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOTE,
-                                   KC_BSPC, KC_C,    KC_V,      KC_N,    KC_M,    TO(STENO_LAYER)
+    STN_FN,  STN_SL,  STN_TL,  STN_PL,  STN_HL,  STN_STR,       STN_STR, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
+    STN_PWR, STN_SL,  STN_KL,  STN_WL,  STN_RL,  STN_STR,       STN_STR, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,
+                               STN_NUM, STN_A,   STN_O,         STN_E,   STN_U,   STN_NUM
     )
 };
 // Don't fuck with this, thanks.
