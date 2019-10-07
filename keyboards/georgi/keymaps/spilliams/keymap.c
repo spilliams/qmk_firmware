@@ -40,7 +40,7 @@
 // http://docs.gboards.ca
 uint32_t processQwerty(bool lookup) {
     // Specials
-    P( RT  | RS  | RD  | RZ | LNO,        SEND_STRING("v3.0 spilliams "); SEND_STRING(__DATE__));
+    P( RT  | RS  | RD  | RZ | LNO,        SEND_STRING("v3.1 spilliams "); SEND_STRING(__DATE__));
     P( LNO | RNO | LA  | LO | RE | RU,    SEND(KC_MEDIA_PLAY_PAUSE));
     P( LFT | LK  | LP  | LW,              REPEAT());
     P( ST1 | ST2 | LW  | ST4,             SEND(KC_BSPC));
@@ -210,9 +210,9 @@ uint32_t processQwerty(bool lookup) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // Main layer, everything goes through here
     [STENO_LAYER] = LAYOUT_georgi(
-    STN_FN,  STN_SL,  STN_TL,  STN_PL,  STN_HL,  STN_STR,       STN_STR, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
-    STN_PWR, STN_SL,  STN_KL,  STN_WL,  STN_RL,  STN_STR,       STN_STR, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,
-                               STN_NUM, STN_A,   STN_O,         STN_E,   STN_U,   STN_NUM
+    STN_FN,  STN_S1,  STN_TL,  STN_PL,  STN_HL,  STN_ST1,       STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
+    STN_PWR, STN_S2,  STN_KL,  STN_WL,  STN_RL,  STN_ST2,       STN_ST4, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,
+                               STN_N1,  STN_A,   STN_O,         STN_E,   STN_U,   STN_N7
     )
 };
 // Don't fuck with this, thanks.
