@@ -21,7 +21,9 @@
 #define MOVE    (ST1 | ST2)
 
 // QMK Layers
-#define STENO_LAYER   0
+#define STENO_BASE 0
+#define STENO_NAV  1
+#define STENO_FN   2
 
 /* Keyboard Layout
  * ,---------------------------------.    ,------------------------------.
@@ -40,7 +42,7 @@
 // http://docs.gboards.ca
 uint32_t processQwerty(bool lookup) {
     // Specials
-    P( RT  | RS  | RD  | RZ | LNO,        SEND_STRING("v3.2 spilliams "); SEND_STRING(__DATE__));
+    P( RT  | RS  | RD  | RZ | LNO,        SEND_STRING("v4.0 spilliams "); SEND_STRING(__DATE__));
     P( LNO | RNO | LA  | LO | RE | RU,    SEND(KC_MEDIA_PLAY_PAUSE));
     P( LFT | LK  | LP  | LW,              REPEAT());
     P( ST1 | ST2 | LW  | ST4,             SEND(KC_BSPC));
@@ -207,12 +209,23 @@ uint32_t processQwerty(bool lookup) {
 // If you need more space for chords, remove the two gaming layers.
 // Note: If using NO_ACTION_TAPPING, LT will not work!
 
+// I modified this to take the leftmost two keys away from STN_FN and STN_PWR
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // Main layer, everything goes through here
-    [STENO_LAYER] = LAYOUT_georgi(
-    STN_FN,  STN_S1,  STN_TL,  STN_PL,  STN_HL,  STN_ST1,       STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
-    STN_PWR, STN_S2,  STN_KL,  STN_WL,  STN_RL,  STN_ST2,       STN_ST4, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,
-                               STN_N1,  STN_A,   STN_O,         STN_E,   STN_U,   STN_N7
+    [STENO_BASE] = LAYOUT_georgi(
+    KC_ESC,        STN_S1,  STN_TL,   STN_PL,   STN_HL,  STN_ST1,     STN_ST3,  STN_FR,       STN_PR,  STN_LR,  STN_TR,  STN_DR,
+    TG(STENO_NAV), STN_S2,  STN_KL,   STN_WL,   STN_RL,  STN_ST2,     STN_ST4,  STN_RR,       STN_BR,  STN_GR,  STN_SR,  STN_ZR,
+                                       STN_N1,   STN_A,   STN_O,       STN_E,    STN_U,        STN_N7
+    ),
+    [STENO_NAV] = LAYOUT_georgi(
+    KC_TRNS,        KC_W,    KC_GESC,  KC_E,     KC_R,    KC_T,        KC_1,     KC_2,         KC_3,    KC_4,    KC_P,     KC_COMMA,
+    KC_TRNS,        KC_LSFT, KC_TAB,   KC_S,     KC_F,    KC_G,        KC_0,     KC_LEFT,      KC_UP,   KC_DOWN, KC_RIGHT, KC_SLASH,
+                                       KC_LCTRL, KC_LALT, KC_LGUI,     KC_SPACE, TG(STENO_FN), KC_NO
+    ),
+    [STENO_FN] = LAYOUT_georgi(
+    KC_F1,          KC_F2,   KC_F3,    KC_F4,    KC_F5,   KC_F6,       KC_F7,    KC_F8,        KC_F9,   KC_F10,  KC_F11, KC_F12,
+    TO(STENO_BASE), KC_MPRV, KC_MPLY,  KC_MNXT,  KC_VOLD, KC_VOLU,     KC_NO,    KC_HOME,      KC_PGUP, KC_PGDN, KC_END, KC_SYSTEM_SLEEP,
+                                       KC_NO,    KC_NO,   KC_NO,       KC_NO,    KC_TRNS,      KC_NO
     )
 };
 // Don't fuck with this, thanks.
