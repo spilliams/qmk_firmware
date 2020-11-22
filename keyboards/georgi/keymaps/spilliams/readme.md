@@ -1,6 +1,6 @@
 # Georgi QWERTY/Steno firmware
 
-This is spilliams' keymap for Georgi. current version 3.1
+This is spilliams' keymap for Georgi. current version 3.2
 
 - It's based off "minimal"
 - serial mode wasn't working though, so it has been built with `steno_set_mode(STENO_MODE_BOLT)` (in `keyboards/georgi/georgi.c`)
