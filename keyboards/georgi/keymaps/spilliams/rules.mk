@@ -9,12 +9,12 @@ KEYBOARD_SHARED_EP       = yes
 CUSTOM_MATRIX			 = yes
 
 #Firmware reduction options
-MOUSEKEY_ENABLE			 = no 		# 1500 bytes
-NO_TAPPING				 = yes		# 2000 bytes
+MOUSEKEY_ENABLE			 = no   # 1500 bytes
+NO_TAPPING				 = no   # this also enables OSL, for some reason
 NO_PRINT				 = yes
 
 #Debug options
-CONSOLE_ENABLE			 = no
+CONSOLE_ENABLE			 = no   # Plover needs this to be no? to use the serial?
 DEBUG_MATRIX_SCAN_RATE   = no
 DEBUG_MATRIX			 = no
 ONLY_QWERTY				 = no
