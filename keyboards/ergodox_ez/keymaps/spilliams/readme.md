@@ -6,6 +6,5 @@ It combines ergodox-ez/steno, ergodox/default_glow, and georgi/spilliams.
 
 ## TODO
 
-- firmware reset (`RESET`) doesn't work with make, but does work with Wally
-- no steno still
+- steno doesn't work?
 - `VERSION` output is meaningless to me (seems to be name and sha of the latest tag)
