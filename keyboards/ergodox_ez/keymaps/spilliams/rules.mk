@@ -1,6 +1,10 @@
 # from ergodox/steno
 STENO_ENABLE = yes          # Additional protocols for Stenography(+1700), requires VIRTSER
 
+# from https://github.com/paulfioravanti/qmk_example_keymaps
+VIRTSER_ENABLE = yes
+FORCE_NKRO = yes
+
 # from georgi/spilliams
 #Firmware reduction options
 MOUSEKEY_ENABLE			 = no   # 1500 bytes

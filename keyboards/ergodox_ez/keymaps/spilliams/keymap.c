@@ -87,11 +87,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * ,--------------------------------------------------.           ,--------------------------------------------------.
     * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
     * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-    * |        |   #  |   #  |   #  |   #  |   #  |      |           |      |   #  |   #  |   #  |   #  |   #  |   #    |
-    * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+    * |        |   #  |   #  |   #  |   #  |   #  | Bolt |           |      |   #  |   #  |   #  |   #  |   #  |   #    |
+    * |--------+------+------+------+------+------| Mode |           |      |------+------+------+------+------+--------|
     * |        |   S  |   T  |   P  |   H  |   *  |------|           |------|   *  |   F  |   P  |   L  |   T  |   D    |
-    * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-    * |        |   S  |   K  |   W  |   R  |   *  |      |           |      |   *  |   R  |   B  |   G  |   S  |   Z    |
+    * |--------+------+------+------+------+------|Gemini|           |      |------+------+------+------+------+--------|
+    * |        |   S  |   K  |   W  |   R  |   *  | Mode |           |      |   *  |   R  |   B  |   G  |   S  |   Z    |
     * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
     *   |      |      |      |      |      |                                       |      |      |      |      |      |
     *   `----------------------------------'                                       `----------------------------------'
@@ -104,15 +104,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     *                                 `--------------------'       `--------------------'
     */
     [STEN] = LAYOUT_ergodox_pretty(
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, STN_N1,  STN_N2,  STN_N3,  STN_N4,  STN_N5,  KC_TRNS,     KC_TRNS, STN_N6,  STN_N7,  STN_N8,  STN_N9,  STN_NA,  STN_NB,
-    KC_TRNS, STN_S1,  STN_TL,  STN_PL,  STN_HL,  STN_ST1,                       STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
-    KC_TRNS, STN_S2,  STN_KL,  STN_WL,  STN_RL,  STN_ST1, KC_TRNS,     KC_TRNS, STN_ST4, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                                                 KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,
-                                                          KC_TRNS,     KC_TRNS,
-                                        STN_A,   STN_O,   KC_BSPC,     KC_DEL,  STN_E,   STN_U
-   ),
+    KC_TRNS,            KC_TRNS, KC_TRNS, KC_TRNS,            KC_TRNS,            KC_TRNS, KC_TRNS,         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS,            STN_N1,  STN_N2,  STN_N3,             STN_N4,             STN_N5,  QK_STENO_BOLT,   KC_TRNS, STN_N6,  STN_N7,  STN_N8,  STN_N9,  STN_NA,  STN_NB,
+    KC_TRNS,            STN_S1,  STN_TL,  STN_PL,             STN_HL,             STN_ST1,                           STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
+    LM(BASE, MOD_LSFT), STN_S2,  STN_KL,  STN_WL,             STN_RL,             STN_ST1, QK_STENO_GEMINI, KC_TRNS, STN_ST4, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,
+    LM(BASE, MOD_LCTL), KC_TRNS, KC_TRNS, LM(BASE, MOD_LGUI), LM(BASE, MOD_LALT),                                             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                                                                                  KC_TRNS, KC_TRNS,         KC_TRNS, KC_TRNS,
+                                                                                           KC_TRNS,         KC_TRNS,
+                                                              STN_A,              STN_O,   KC_BSPC,         KC_DEL,  STN_E,   STN_U
+    ),
     /* Symbol Layer
     *
     * ,---------------------------------------------------.          ,--------------------------------------------------.
@@ -168,11 +168,6 @@ extern rgb_config_t rgb_matrix_config;
 // Runs just one time when the keyboard initializes.
 void keyboard_post_init_user(void) {
   rgb_matrix_enable();
-};
-
-// Runs just one time when the keyboard initializes.
-void matrix_init_user(void) {
-    steno_set_mode(STENO_MODE_BOLT); // or STENO_MODE_GEMINI
 };
 
 /* Indices of the LED arrays
