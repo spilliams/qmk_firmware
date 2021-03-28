@@ -246,26 +246,9 @@ void rgb_matrix_indicators_user(void) {
 }
 
 uint32_t layer_state_set_user(uint32_t state) {
-    uint8_t layer = biton32(state);
-  
     ergodox_board_led_off();
     ergodox_right_led_1_off();
     ergodox_right_led_2_off();
     ergodox_right_led_3_off();
-    switch (layer) {
-        case STEN:
-          break;
-        case QWER:
-          break;
-        case GAME:
-          // red is the least obtrusive one
-          ergodox_right_led_1_on();
-          break;
-        case SYMB:
-          ergodox_right_led_3_on();
-          break;
-        default:
-          break;
-    }
     return state;
 };
